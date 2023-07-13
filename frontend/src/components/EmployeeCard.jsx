@@ -20,7 +20,7 @@ const EmployeeCard = ({employee}) => {
             </div>
             <footer className="flex justify-between">
                 <button
-                    className="roundes-xs bg-indigo-500 p-2 m-2 text-white w-full"
+                    className="rounded-md bg-indigo-500 p-2 m-2 text-white w-full"
                     onClick={() => {
                         navigate(`/update/${employee.employeeID}`);
                     }}
@@ -28,7 +28,7 @@ const EmployeeCard = ({employee}) => {
                     Edit
                 </button>
                 <button
-                    className="roundes-xs bg-red-500 p-2 m-2 text-white w-full"
+                    className="rounded-md bg-red-500 p-2 m-2 text-white w-full"
                     onClick={() => {
                         deleteEmployee(employee.employeeID);
                     }}
