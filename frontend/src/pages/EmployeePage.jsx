@@ -1,15 +1,11 @@
-import {useEffect, useState} from "react";
-import {getEmployeesReq} from "../api/employees.api";
+import {useEffect} from "react";
 import EmployeeCard from "../components/EmployeeCard";
+import {useEmployee} from '../context/EmployeeContext'
 
 const EmployeePage = () => {
-    const [employees, setEmployees] = useState([]);
+    const {employees, getEmployees} = useEmployee()
 
     useEffect(() => {
-        async function getEmployees() {
-            const response = await getEmployeesReq();
-            setEmployees(response.data);
-        }
         getEmployees();
     }, []);
 
@@ -17,10 +13,12 @@ const EmployeePage = () => {
 
     return (
         <div>
-            <h1>Employees</h1>
+            <h1 className="text-4xl font-bold text-center text-zinc-900 m-4">Employees</h1>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 m-2">
             {employees.map(employee => (
                 <EmployeeCard employee={employee} key={employee.employeeID} />
             ))}
+            </div>
         </div>
     );
 };
