@@ -9,11 +9,11 @@ export class Employees extends BaseEntity {
     employeeName: string;
 
     @Column({type: "date"})
-    date: Date;
+    date: string;
 
-    @Column("time")
-    punchIn: Date;
+    @Column({type: "time"})
+    punchIn: string;
 
-    @Column("time")
-    punchOut: Date;
+    @Column({type: "time"})
+    punchOut: string;
 }

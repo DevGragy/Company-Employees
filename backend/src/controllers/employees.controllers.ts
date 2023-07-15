@@ -1,7 +1,6 @@
 import {Request, Response} from "express";
 import {Employees} from "../entities/Employees";
 import xlsx from "xlsx";
-import { format } from "path";
 
 export const createEmployee = async (req: Request, res: Response) => {
     try {
@@ -24,39 +23,38 @@ export const createEmployee = async (req: Request, res: Response) => {
 };
 
 export const createEmployeeByExcel = async (req: Request, res: Response) => {
-    function formatDate ( value:any ):Date {
-        if (typeof value === 'number' && !isNaN(value)) {
-            if(Number.isInteger(value)) {
-                const date = xlsx.SSF.format('dd/mm/yyyy', value)
-                return new Date(date)
-            } else {
-                const hours = Math.floor(value)
-                const minutesToDecimal = value % 1;
-                const minutes = Math.floor(minutesToDecimal * 60)
-                const dateFromTime = new Date()
-                dateFromTime.setHours(hours, minutes,0)
-                return dateFromTime
-            }
-        } 
-        return value
-    }
-
     const workbook = xlsx.read(req.file?.buffer, {type: "buffer"});
     const worksheet = workbook.Sheets[workbook.SheetNames[0]];
     const data = xlsx.utils.sheet_to_json(worksheet);
-    
+
+    function formatDate(value: any): string {
+        if (typeof value === "number" && !isNaN(value)) {
+            const date = xlsx.SSF.format("dd/mm/yyyy", value);
+            return date;
+        }
+        return value;
+    }
+
+    function formatTime(decHour: number): string {
+        const hours = Math.floor(decHour * 24);
+        const minutes = Math.round((decHour * 24 - hours) * 60);
+        const seconds = 0;
+        const newTime = `${hours.toString().padStart(2, "0")}:${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
+        return newTime;
+    }
+
     try {
         const excelEmployees = data.map((row: any) => {
             const employee = new Employees();
-            employee.employeeName = row.employeeName;
-            employee.date = formatDate(row.date);
-            employee.punchIn = formatDate(row.punchIn);
-            employee.punchOut = formatDate(row.punchOut);
+            employee.employeeName = row["Employee Name"];
+            employee.date = formatDate(row["Date"]);
+            employee.punchIn = formatTime(row["Punch In"]);
+            employee.punchOut = formatTime(row["Punch Out"]);
 
             return employee;
         });
         await Employees.save(excelEmployees);
-        res.status(200).send('Employees created succesfully! :)')
+        res.status(200).send("Employees created succesfully! :)");
     } catch (error) {
         if (error instanceof Error) {
             return res.status(500).json({message: error.message});
