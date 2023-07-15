@@ -19,3 +19,6 @@ export const updateEmployeeReq = async (employeeID, payload) => {
 export const deleteEmployeeReq = async(employeeID) => {
     return await axios.delete(`https://keyence-production.up.railway.app/employee/${employeeID}`)
 }
+
+//PROD: https://keyence-production.up.railway.app/employee
+//TEST: http://localhost:4000/employee

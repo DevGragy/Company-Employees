@@ -1,0 +1,89 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "Keyence",
+    "dateExported": "2023-07-15T19:02:44.432Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "e32d48ee-9ba6-4406-8253-9df60239dcc8",
+            "colId": "d409309a-e2d6-47ea-806e-14340ab8f9a9",
+            "containerId": "",
+            "name": "Create Employee",
+            "url": "http://localhost:4000/employee",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2023-07-11T22:55:30.491Z",
+            "modified": "2023-07-15T19:02:04.686Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"employeeName\": \"While\",\n  \"date\": \"2023-07-11\",\n  \"punchIn\": \"08:05\", \n  \"punchOut\": \"18:01\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "9f5b6234-0dbb-4334-aeae-384999ced0c7",
+            "colId": "d409309a-e2d6-47ea-806e-14340ab8f9a9",
+            "containerId": "",
+            "name": "Get Employee",
+            "url": "http://localhost:4000/employee",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2023-07-11T23:28:14.970Z",
+            "modified": "2023-07-15T02:31:15.525Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "5005c7dc-c010-46f5-806f-685f18d1c4d7",
+            "colId": "d409309a-e2d6-47ea-806e-14340ab8f9a9",
+            "containerId": "",
+            "name": "Update Employee",
+            "url": "http://localhost:4000/employee/1",
+            "method": "PUT",
+            "sortNum": 30000,
+            "created": "2023-07-11T23:32:03.246Z",
+            "modified": "2023-07-15T19:01:04.496Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"employeeName\": \"Front\",\n  \"date\": \"2023-07-11\",\n  \"punchIn\": \"08:00\", \n  \"punchOut\": \"18:00\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "48adeff9-276f-4ec3-b23e-3ef5f179e772",
+            "colId": "d409309a-e2d6-47ea-806e-14340ab8f9a9",
+            "containerId": "",
+            "name": "Delete Employee",
+            "url": "http://localhost:4000/employee/180",
+            "method": "DELETE",
+            "sortNum": 40000,
+            "created": "2023-07-11T23:53:16.931Z",
+            "modified": "2023-07-15T19:02:17.463Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "279b43b9-be58-4619-985f-5dc2cf0ebb83",
+            "colId": "d409309a-e2d6-47ea-806e-14340ab8f9a9",
+            "containerId": "",
+            "name": "Get Employee",
+            "url": "http://localhost:4000/employee/180",
+            "method": "GET",
+            "sortNum": 50000,
+            "created": "2023-07-12T00:05:24.611Z",
+            "modified": "2023-07-15T19:02:12.322Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        }
+    ]
+}
