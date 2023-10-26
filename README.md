@@ -1,4 +1,4 @@
-# Keyence Technical Test
+# Employees
 
 ### Make sure you run the following command on both 
 - npm i
